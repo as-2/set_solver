@@ -40,6 +40,9 @@ class Card_Collection(object):
             return True
         return False
     
+    def __len__(self) -> int:
+        return len(self.cards)
+
     def __str__(self) -> str:
         return f"{self.cards}"
 
@@ -79,9 +82,12 @@ class Table(Card_Collection):
         self.group_fill = group_fill_dict
         return
 
-    def solved_sets(self) -> dict:
+    def solved_sets(self) -> list:
         # HERE IS THE THING
-        pass
+        # should return a list of Card_Collections
+        # each Card_Collection object should have 
+        solutions = []
+        return solutions
 
 
 def load_table_json(table_id) -> dict:
@@ -113,10 +119,8 @@ def check_solutions(table_id, solutions) -> bool:
     '''
     expected_solns_json = load_table_json(table_id)["Solution Sets"]
     expected_solns_list = [Card_Collection(make_cards_list(soln)) for soln in expected_solns_json]
-    # print(expected_solns_list)
 
     for expected_soln in expected_solns_list:
-        print(expected_soln)
         if expected_soln not in solutions:
             return False
 
@@ -135,12 +139,12 @@ if __name__ == '__main__':
     cards_list = make_cards_list(get_cards_json(table_id))
     table = Table(cards_list)
 
-    ex_table_2_solns = [[Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')],
-      [Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')],
-      [Card('two', 'squiggle', 'green', 'empty'), Card('one', 'squiggle', 'purple', 'striped'), Card('three', 'squiggle', 'red', 'solid')],
-      [Card('one', 'squiggle', 'green', 'solid'), Card('three', 'diamond', 'green', 'solid'), Card('two', 'oval', 'green', 'solid')],
-      [Card('two', 'squiggle', 'red', 'striped'), Card('two', 'diamond', 'green', 'empty'), Card('two', 'oval', 'purple', 'solid')],
-      [Card('three', 'diamond', 'red', 'empty'), Card('one', 'squiggle', 'purple', 'striped'), Card('two', 'oval', 'green', 'solid')]]
+    ex_table_2_solns = [Card_Collection([Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')]),
+      Card_Collection([Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')]),
+      Card_Collection([Card('one', 'squiggle', 'green', 'solid'), Card('three', 'diamond', 'green', 'solid'), Card('two', 'oval', 'green', 'solid')]),
+      Card_Collection([Card('two', 'squiggle', 'red', 'striped'), Card('two', 'diamond', 'green', 'empty'), Card('two', 'oval', 'purple', 'solid')]),
+      Card_Collection([Card('two', 'squiggle', 'green', 'empty'), Card('one', 'squiggle', 'purple', 'striped'), Card('three', 'squiggle', 'red', 'solid')]),
+      Card_Collection([Card('three', 'diamond', 'red', 'empty'), Card('one', 'squiggle', 'purple', 'striped'), Card('two', 'oval', 'green', 'solid')])]
 
     ex_table_1_solns = [[Card("one", "diamond", "purple", "solid"),
                         Card("two", "diamond", "purple", "solid"),

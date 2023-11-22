@@ -20,7 +20,34 @@ class Card(object):
         return False
 
 
-class Table(object):
+class Card_Collection(object):
+    def __init__(self, cards) -> None:
+        self.cards = cards
+
+    def __eq__(self, other_cards) -> bool:
+        if len(self.cards) != len(other_cards):
+            return False
+        for card in self.cards:
+            if card not in other_cards:
+                return False
+        return True
+    
+    def __contains__(self, card) -> bool:
+        '''
+        checks whether or not this collection contains the specified card
+        '''
+        if card in self.cards:
+            return True
+        return False
+    
+    def __str__(self) -> str:
+        return f"{self.cards}"
+
+    def __repr__(self) -> str:
+        return f"{type(self).__name__}({self.cards})"
+
+
+class Table(Card_Collection):
     def __init__(self, cards):
         self.cards = cards
 
@@ -31,13 +58,8 @@ class Table(object):
 
         self.set_group_dicts()
 
-    def __contains__(self, card) -> bool:
-        '''
-        checks whether or not this table contains the specified card
-        '''
-        if card in self.cards:
-            return True
-        return False
+    def __repr__(self) -> str:
+        return f"{type(self).__name__}({self.cards})"
 
     def set_group_dicts(self) -> None:
         group_number_dict = {"one": [], "two": [], "three": []}
@@ -86,13 +108,15 @@ def make_cards_list(cards) -> Table:
 
 def check_solutions(table_id, solutions) -> bool:
     '''
-    This is where I can compare the solutions that my program comes up with against "Solution Sets" from the json file
+    This is where I can compare the solutions that my program comes up with against "Solution Sets" from the json file;
+    Program must get every 
     '''
     expected_solns_json = load_table_json(table_id)["Solution Sets"]
-    expected_solns_list = [make_cards_list(soln) for soln in expected_solns_json]
-    print(expected_solns_list)
+    expected_solns_list = [Card_Collection(make_cards_list(soln)) for soln in expected_solns_json]
+    # print(expected_solns_list)
 
     for expected_soln in expected_solns_list:
+        print(expected_soln)
         if expected_soln not in solutions:
             return False
 
@@ -111,8 +135,7 @@ if __name__ == '__main__':
     cards_list = make_cards_list(get_cards_json(table_id))
     table = Table(cards_list)
 
-    # solns_list = [make_cards_list() for ]
-    ex_table_2_solns = [[Card('two', 'squiggle', 'red', 'striped'), Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid')],
+    ex_table_2_solns = [[Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')],
       [Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')],
       [Card('two', 'squiggle', 'green', 'empty'), Card('one', 'squiggle', 'purple', 'striped'), Card('three', 'squiggle', 'red', 'solid')],
       [Card('one', 'squiggle', 'green', 'solid'), Card('three', 'diamond', 'green', 'solid'), Card('two', 'oval', 'green', 'solid')],
@@ -125,4 +148,3 @@ if __name__ == '__main__':
                         ]]
 
     print(check_solutions(table_id, ex_table_2_solns))
-    # print(table.__contains__(Card("one", "oval", "red", "striped")))

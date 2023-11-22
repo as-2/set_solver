@@ -163,11 +163,11 @@ if __name__ == '__main__':
 
     cards_list = make_cards_list(get_cards_json(table_id))
     table1 = Table(cards_list)
-    print(table1)
-    print()
+    # print(table1)
+    # print()
 
     table2 = Table(Card_Collection(cards_list))
-    print(table2)
+    # print(table2)
 
     ex_table_2_solns = [Card_Collection([Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')]),
       Card_Collection([Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')]),
@@ -182,6 +182,12 @@ if __name__ == '__main__':
                         ]]
 
     # print(check_solutions(table_id, ex_table_2_solns))
-    print(compare_cards(table1, table2))
-    # combos = Table.card_combinations(table1)
+    # print(compare_cards(table1, table2))
+    combos = Table.card_combinations(table1)
+    combos_ = [Card('two', 'squiggle', 'red', 'striped'), Card('two', 'diamond', 'purple', 'empty'), Card('one', 'squiggle', 'green', 'solid')]
+    print(combos[0])
+    print()
+    print(combos_)
+    # print(combos[0])
+    print(compare_cards(Card_Collection(combos_), Card_Collection(combos[0])))
     # print(type(combos))

@@ -225,9 +225,9 @@
                 "fill": "solid"
             },
             {
-                "number": "red",
+                "number": "one",
                 "shape": "oval",
-                "color": "purple",
+                "color": "red",
                 "fill": "striped"
             }
         ],

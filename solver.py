@@ -18,20 +18,51 @@ class Table(object):
     def __init__(self, cards):
         self.cards = cards
 
+        self.group_number = None
+        self.group_shape = None
+        self.group_color = None
+        self.group_fill = None
+
     def group_number(self) -> dict:
-        group_number_dict = {}
+        group_number_dict = {"one": [], "two": [], "three": []}
         pass
     
     def group_shape(self) -> dict:
+        group_shape_dict = {"diamond": [], "oval": [], "squiggle": []}
         pass
 
     def group_color(self) -> dict:
         # creates a new cards dict that groups them by color
         # {'green':{...}, 'red':{...}, ...}
+        group_color_dict = {"purple": [], "green": [], "red": []}
         pass
 
     def group_fill(self) -> dict:
+        group_fill_dict = {"empty": [], "striped": [], "solid": []}
         pass
+
+    def make_group_dicts(self) -> None:
+        group_number_dict = {"one": [], "two": [], "three": []}
+        group_shape_dict = {"diamond": [], "oval": [], "squiggle": []}
+        group_color_dict = {"purple": [], "green": [], "red": []}
+        group_fill_dict = {"empty": [], "striped": [], "solid": []}
+
+        print(type(self.cards))
+        
+        for card in self.cards:
+            group_number_dict[card.number].append(card)
+            group_shape_dict[card.shape].append(card)
+            group_color_dict[card.color].append(card)
+            group_fill_dict[card.fill].append(card)
+        
+        print(group_number_dict)
+        print()
+        print(group_shape_dict)
+        print()
+        print(group_color_dict)
+        print()
+        print(group_fill_dict)
+        return
 
     def solved_sets(self) -> dict:
         # HERE IS THE THING
@@ -41,7 +72,6 @@ class Table(object):
 def load_table_json(table_id) -> dict:
     with open("example_tables.json") as f:
         table_json = json.load(f)[table_id]
-    print(type(table_json))
     return table_json
 
 
@@ -61,9 +91,12 @@ if __name__ == '__main__':
     # color = purple, green, red
     # fill = empty, striped, solid
     new_card = Card(2, "diamond", "purple", "striped")
-    print(new_card)
+    # print(new_card)
 
     table_list = make_table(0)
-    print(table_list)
-    for card in table_list:
-        print(card)
+    # print(table_list)
+    # for card in table_list:
+    #     print(card)
+    table = Table(table_list)
+    print(table)
+    table.make_group_dicts()

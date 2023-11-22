@@ -204,15 +204,56 @@
     },
     {
         "Table ID": 1,
-        "Number of Cards": 12,
+        "Number of Cards": 4,
         "Cards": [
             {
-                "number": 1,
-                "shape": 3,
-                "color": 900,
-                "fill": 3
+                "number": "one",
+                "shape": "diamond",
+                "color": "purple",
+                "fill": "solid"
+            },
+            {
+                "number": "two",
+                "shape": "diamond",
+                "color": "purple",
+                "fill": "solid"
+            },
+            {
+                "number": "three",
+                "shape": "diamond",
+                "color": "purple",
+                "fill": "solid"
+            },
+            {
+                "number": "red",
+                "shape": "oval",
+                "color": "purple",
+                "fill": "striped"
             }
-        ]
+        ],
+        "Solution Sets": [
+            [
+                {
+                    "number": "one",
+                    "shape": "diamond",
+                    "color": "purple",
+                    "fill": "solid"
+                },
+                {
+                    "number": "two",
+                    "shape": "diamond",
+                    "color": "purple",
+                    "fill": "solid"
+                },
+                {
+                    "number": "three",
+                    "shape": "diamond",
+                    "color": "purple",
+                    "fill": "solid"
+                }
+            ]
+        ],
+        "Notes": "an oversimplified table for testing"
         
     }
 ]

@@ -18,21 +18,22 @@ class Table(object):
     def __init__(self, cards):
         self.cards = cards
 
-    def group_number(self):
+    def group_number(self) -> dict:
+        group_number_dict = {}
         pass
     
-    def group_shape(self):
+    def group_shape(self) -> dict:
         pass
 
-    def group_color(self):
+    def group_color(self) -> dict:
         # creates a new cards dict that groups them by color
         # {'green':{...}, 'red':{...}, ...}
         pass
 
-    def group_fill(self):
+    def group_fill(self) -> dict:
         pass
 
-    def solved_sets(self):
+    def solved_sets(self) -> dict:
         # HERE IS THE THING
         pass
 

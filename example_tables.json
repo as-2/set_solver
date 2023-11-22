@@ -4,92 +4,215 @@
         "Number of Cards": 12,
         "Cards": [
             {
-                "number": 1,
+                "number": "one",
                 "shape": "squiggle",
                 "color": "green",
                 "fill": "solid"
             },
             {
-                "number": 2,
+                "number": "two",
                 "shape": "squiggle",
                 "color": "red",
                 "fill": "striped"
             },
             {
-                "number": 2,
+                "number": "two",
                 "shape": "diamond",
                 "color": "purple",
                 "fill": "empty"
             },
             {
-                "number": 3,
+                "number": "three",
                 "shape": "diamond",
                 "color": "green",
                 "fill": "solid"
             },
             {
-                "number": 2,
+                "number": "two",
                 "shape": "squiggle",
                 "color": "green",
                 "fill": "empty"
             },
             {
-                "number": 3,
+                "number": "three",
                 "shape": "diamond",
                 "color": "red",
                 "fill": "empty"
             },
             {
-                "number": 1,
+                "number": "one",
                 "shape": "squiggle",
                 "color": "purple",
                 "fill": "striped"
             },
             {
-                "number": 3,
+                "number": "three",
                 "shape": "squiggle",
                 "color": "red",
                 "fill": "solid"
             },
             {
-                "number": 2,
+                "number": "two",
                 "shape": "oval",
                 "color": "green",
                 "fill": "solid"
             },
             {
-                "number": 2,
+                "number": "two",
                 "shape": "diamond",
                 "color": "green",
                 "fill": "empty"
             },
             {
-                "number": 1,
+                "number": "one",
                 "shape": "diamond",
                 "color": "green",
                 "fill": "solid"
             },
             {
-                "number": 2,
+                "number": "two",
                 "shape": "oval",
                 "color": "purple",
                 "fill": "solid"
             }
+        ],
+        "Solution Sets": [
+            [
+                {
+                    "number": "two",
+                    "shape": "squiggle",
+                    "color": "red",
+                    "fill": "striped"
+                },
+                {
+                    "number": "two",
+                    "shape": "diamond",
+                    "color": "purple",
+                    "fill": "empty"
+                },
+                {
+                    "number": "two",
+                    "shape": "oval",
+                    "color": "green",
+                    "fill": "solid"
+                }
+            ],
+            [
+                {
+                    "number": "three",
+                    "shape": "squiggle",
+                    "color": "red",
+                    "fill": "solid"
+                },
+                {
+                    "number": "one",
+                    "shape": "diamond",
+                    "color": "green",
+                    "fill": "solid"
+                },
+                {
+                    "number": "two",
+                    "shape": "oval",
+                    "color": "purple",
+                    "fill": "solid"
+                }
+            ],
+            [
+                {
+                    "number": "two",
+                    "shape": "squiggle",
+                    "color": "green",
+                    "fill": "empty"
+                },
+                {
+                    "number": "one",
+                    "shape": "squiggle",
+                    "color": "purple",
+                    "fill": "striped"
+                },
+                {
+                    "number": "three",
+                    "shape": "squiggle",
+                    "color": "red",
+                    "fill": "solid"
+                }
+            ],
+            [
+                {
+                    "number": "one",
+                    "shape": "squiggle",
+                    "color": "green",
+                    "fill": "solid"
+                },
+                {
+                    "number": "three",
+                    "shape": "diamond",
+                    "color": "green",
+                    "fill": "solid"
+                },
+                {
+                    "number": "two",
+                    "shape": "oval",
+                    "color": "green",
+                    "fill": "solid"
+                }
+            ],
+            [
+                {
+                    "number": "two",
+                    "shape": "squiggle",
+                    "color": "red",
+                    "fill": "striped"
+                },
+                {
+                    "number": "two",
+                    "shape": "diamond",
+                    "color": "green",
+                    "fill": "empty"
+                },
+                {
+                    "number": "two",
+                    "shape": "oval",
+                    "color": "purple",
+                    "fill": "solid"
+                }
+            ],
+            [
+                {
+                    "number": "three",
+                    "shape": "diamond",
+                    "color": "red",
+                    "fill": "empty"
+                },
+                {
+                    "number": "one",
+                    "shape": "squiggle",
+                    "color": "purple",
+                    "fill": "striped"
+                },
+                {
+                    "number": "two",
+                    "shape": "oval",
+                    "color": "green",
+                    "fill": "solid"
+                }
+            ]
+ 
         ],
         "Notes": "from 21 Nov 2023 setgame.com"
         
     },
     {
         "Table ID": 1,
-            "Number of Cards": 12,
-            "Cards": [
-                {
-                    "number": 1,
-                    "shape": 3,
-                    "color": 900,
-                    "fill": 3
-                }
-            ]
+        "Number of Cards": 12,
+        "Cards": [
+            {
+                "number": 1,
+                "shape": 3,
+                "color": 900,
+                "fill": 3
+            }
+        ]
         
     }
 ]

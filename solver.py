@@ -85,37 +85,43 @@ class Table(Card_Collection):
     def solved_sets(self) -> list:
         # HERE IS THE THING
         # should return a list of Card_Collections
-        # each Card_Collection object should have 
+        # each Card_Collection object should have solution sets
         solutions = []
         return solutions
 
 
-def load_table_json(table_id) -> dict:
+def load_table_json(table_id:int) -> dict:
+    '''
+    Loads the specified table_id from JSON file and returns entire table
+    '''
     with open("example_tables.json") as f:
         table_json = json.load(f)[table_id]
     return table_json
 
 
-def get_cards_json(table_id) -> list:
+def get_cards_json(table_id:int) -> list:
+    '''
+    Loads the specified table_id from the JSON file and returns list of cards
+    '''
     table_json = load_table_json(table_id)
     cards = table_json["Cards"]
     return cards
 
 
-def make_cards_list(cards) -> Table:
+def make_cards_list(cards:list) -> list:
     '''
     :param cards: list of Card objects
     '''
-    print("BAKSJFLE")
-    print(cards[0])
     cards_list = [Card(**card) for card in cards]
     return cards_list
 
 
-def check_solutions(table_id, solutions) -> bool:
+def check_solutions(table_id:int, solutions:list) -> bool:
     '''
     This is where I can compare the solutions that my program comes up with against "Solution Sets" from the json file;
-    Program must get every 
+    Program must get EVERY solution set, or returns False
+    :param table_id: 
+    :param solutions: list of Card_Collection objects
     '''
     expected_solns_json = load_table_json(table_id)["Solution Sets"]
     expected_solns_list = [Card_Collection(make_cards_list(soln)) for soln in expected_solns_json]

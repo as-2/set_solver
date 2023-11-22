@@ -63,28 +63,10 @@ class Table(Card_Collection):
         self.group_color: None | dict = None
         self.group_fill: None | dict = None
 
-        self.set_group_dicts()
+        self.valid_sets: list = self.solved_sets()
 
     def __repr__(self) -> str:
         return f"{type(self).__name__}({self.cards})"
-
-    def set_group_dicts(self) -> None:
-        group_number_dict = {"one": [], "two": [], "three": []}
-        group_shape_dict = {"diamond": [], "oval": [], "squiggle": []}
-        group_color_dict = {"purple": [], "green": [], "red": []}
-        group_fill_dict = {"empty": [], "striped": [], "solid": []}
-        
-        for card in self.cards:
-            group_number_dict[card.number].append(card)
-            group_shape_dict[card.shape].append(card)
-            group_color_dict[card.color].append(card)
-            group_fill_dict[card.fill].append(card)
-        
-        self.group_number = group_number_dict
-        self.group_shape = group_shape_dict
-        self.group_color = group_color_dict
-        self.group_fill = group_fill_dict
-        return
 
     def get_card_combinations(self) -> list:
         '''
@@ -204,10 +186,6 @@ if __name__ == '__main__':
     # print(compare_cards(table1, table2))
     # combos = Table.get_card_combinations(table1)
     # print(type(combos))
-    solved_sets = table1.solved_sets()
-    # print(len(solved_sets))
-    print(solved_sets)
-    print()
-    print(ex_table_2_solns)
     
-    print(check_solutions(table_id, solved_sets))
+    print(check_solutions(table_id, table1.valid_sets))
+    print(table1.valid_sets)

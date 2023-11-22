@@ -57,7 +57,6 @@ class Card_Collection(object):
 class Table(Card_Collection):
     def __init__(self, cards: list | Card_Collection):
         super().__init__(cards)
-        # self.cards = cards
 
         self.group_number: None | dict = None
         self.group_shape: None | dict = None
@@ -87,18 +86,42 @@ class Table(Card_Collection):
         self.group_fill = group_fill_dict
         return
 
-    def card_combinations(self) -> list:
+    def get_card_combinations(self) -> list:
         '''
         With 12 cards, should always have len = 220
         '''
         combos = list(combinations(self.cards, 3))
         return combos
 
+    def is_valid_set(self, combo: tuple) -> bool:
+        '''
+        Takes in a 3-card combo and returns if it is a valid Set
+        '''
+        card_1, card_2, card_3 = combo
+        if not ((card_1.number == card_2.number == card_3.number) 
+                or ((card_1.number != card_2.number) and (card_1.number != card_3.number) and (card_2.number != card_3.number))):
+            return False
+        if not ((card_1.shape == card_2.shape == card_3.shape) 
+                or ((card_1.shape != card_2.shape) and (card_1.shape != card_3.shape) and (card_2.shape != card_3.shape))):
+            return False
+        if not ((card_1.color == card_2.color == card_3.color) 
+                or ((card_1.color != card_2.color) and (card_1.color != card_3.color) and (card_2.color != card_3.color))):
+            return False
+        if not ((card_1.fill == card_2.fill == card_3.fill) 
+                or ((card_1.fill != card_2.fill) and (card_1.fill != card_3.fill) and (card_2.fill != card_3.fill))):
+            return False
+        return True
+
     def solved_sets(self) -> list:
         # HERE IS THE THING
         # should return a list of Card_Collections
         # each Card_Collection object should have solution sets
         solutions = []
+        combos = self.get_card_combinations()
+
+        for combo in combos:
+            if self.is_valid_set(combo) is True:
+                solutions.append(Card_Collection(combo))
         return solutions
 
 
@@ -152,7 +175,6 @@ def check_solutions(table_id:int, solutions:list) -> bool:
     return True
 
 
-
 if __name__ == '__main__':
     # numbers = one, two, three
     # shape = diamond, oval, squiggle
@@ -165,9 +187,6 @@ if __name__ == '__main__':
     table1 = Table(cards_list)
     # print(table1)
     # print()
-
-    table2 = Table(Card_Collection(cards_list))
-    # print(table2)
 
     ex_table_2_solns = [Card_Collection([Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')]),
       Card_Collection([Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')]),
@@ -183,11 +202,12 @@ if __name__ == '__main__':
 
     # print(check_solutions(table_id, ex_table_2_solns))
     # print(compare_cards(table1, table2))
-    combos = Table.card_combinations(table1)
-    combos_ = [Card('two', 'squiggle', 'red', 'striped'), Card('two', 'diamond', 'purple', 'empty'), Card('one', 'squiggle', 'green', 'solid')]
-    print(combos[0])
-    print()
-    print(combos_)
-    # print(combos[0])
-    print(compare_cards(Card_Collection(combos_), Card_Collection(combos[0])))
+    # combos = Table.get_card_combinations(table1)
     # print(type(combos))
+    solved_sets = table1.solved_sets()
+    # print(len(solved_sets))
+    print(solved_sets)
+    print()
+    print(ex_table_2_solns)
+    
+    print(check_solutions(table_id, solved_sets))

@@ -1,0 +1,95 @@
+[
+    {
+        "Table ID": 0,
+        "Number of Cards": 12,
+        "Cards": [
+            {
+                "number": 1,
+                "shape": "squiggle",
+                "color": "green",
+                "fill": "solid"
+            },
+            {
+                "number": 2,
+                "shape": "squiggle",
+                "color": "red",
+                "fill": "striped"
+            },
+            {
+                "number": 2,
+                "shape": "diamond",
+                "color": "purple",
+                "fill": "empty"
+            },
+            {
+                "number": 3,
+                "shape": "diamond",
+                "color": "green",
+                "fill": "solid"
+            },
+            {
+                "number": 2,
+                "shape": "squiggle",
+                "color": "green",
+                "fill": "empty"
+            },
+            {
+                "number": 3,
+                "shape": "diamond",
+                "color": "red",
+                "fill": "empty"
+            },
+            {
+                "number": 1,
+                "shape": "squiggle",
+                "color": "purple",
+                "fill": "striped"
+            },
+            {
+                "number": 3,
+                "shape": "squiggle",
+                "color": "red",
+                "fill": "solid"
+            },
+            {
+                "number": 2,
+                "shape": "oval",
+                "color": "green",
+                "fill": "solid"
+            },
+            {
+                "number": 2,
+                "shape": "diamond",
+                "color": "green",
+                "fill": "empty"
+            },
+            {
+                "number": 1,
+                "shape": "diamond",
+                "color": "green",
+                "fill": "solid"
+            },
+            {
+                "number": 2,
+                "shape": "oval",
+                "color": "purple",
+                "fill": "solid"
+            }
+        ],
+        "Notes": "from 21 Nov 2023 setgame.com"
+        
+    },
+    {
+        "Table ID": 1,
+            "Number of Cards": 12,
+            "Cards": [
+                {
+                    "number": 1,
+                    "shape": 3,
+                    "color": 900,
+                    "fill": 3
+                }
+            ]
+        
+    }
+]

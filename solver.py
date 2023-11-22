@@ -42,6 +42,9 @@ class Card_Collection(object):
     
     def __len__(self) -> int:
         return len(self.cards)
+    
+    def __iter__(self):
+        return iter(self.cards)
 
     def __str__(self) -> str:
         return f"{self.cards}"
@@ -51,8 +54,9 @@ class Card_Collection(object):
 
 
 class Table(Card_Collection):
-    def __init__(self, cards):
-        self.cards = cards
+    def __init__(self, cards: list | Card_Collection):
+        super().__init__(cards)
+        # self.cards = cards
 
         self.group_number: None | dict = None
         self.group_shape: None | dict = None
@@ -143,7 +147,9 @@ if __name__ == '__main__':
     table_id = 0 # 0 is actual, 1 is smaller
 
     cards_list = make_cards_list(get_cards_json(table_id))
-    table = Table(cards_list)
+    # table = Table(cards_list)
+
+    table = Table(Card_Collection(cards_list))
 
     ex_table_2_solns = [Card_Collection([Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')]),
       Card_Collection([Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')]),

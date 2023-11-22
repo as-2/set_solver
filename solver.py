@@ -23,24 +23,6 @@ class Table(object):
         self.group_color = None
         self.group_fill = None
 
-    def group_number(self) -> dict:
-        group_number_dict = {"one": [], "two": [], "three": []}
-        pass
-    
-    def group_shape(self) -> dict:
-        group_shape_dict = {"diamond": [], "oval": [], "squiggle": []}
-        pass
-
-    def group_color(self) -> dict:
-        # creates a new cards dict that groups them by color
-        # {'green':{...}, 'red':{...}, ...}
-        group_color_dict = {"purple": [], "green": [], "red": []}
-        pass
-
-    def group_fill(self) -> dict:
-        group_fill_dict = {"empty": [], "striped": [], "solid": []}
-        pass
-
     def make_group_dicts(self) -> None:
         group_number_dict = {"one": [], "two": [], "three": []}
         group_shape_dict = {"diamond": [], "oval": [], "squiggle": []}

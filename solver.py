@@ -11,7 +11,7 @@ class Card(object):
         return f"{self.number}, {self.shape}, {self.color}, {self.fill}"
     
     def __repr__(self) -> str:
-        return f"Card({self.number}, {self.shape}, {self.color}, {self.fill})"
+        return f"{type(self).__name__}({self.number!r}, {self.shape!r}, {self.color!r}, {self.fill!r})"
     
     def __eq__(self, other_card) -> bool:
         if (self.number == other_card.number and self.shape == other_card.shape 
@@ -84,20 +84,19 @@ def make_cards_list(cards) -> Table:
     return cards_list
 
 
-def check_solutions(table_id, solution) -> bool:
+def check_solutions(table_id, solutions) -> bool:
     '''
     This is where I can compare the solutions that my program comes up with against "Solution Sets" from the json file
     '''
     expected_solns_json = load_table_json(table_id)["Solution Sets"]
     expected_solns_list = [make_cards_list(soln) for soln in expected_solns_json]
     print(expected_solns_list)
-    print()
-    print(solution)
-    print()
-    # result = (solution == expected_solns_list)
-    result = True
 
-    return result
+    for expected_soln in expected_solns_list:
+        if expected_soln not in solutions:
+            return False
+
+    return True
 
 
 
@@ -107,15 +106,23 @@ if __name__ == '__main__':
     # color = purple, green, red
     # fill = empty, striped, solid
 
-    table_id = 1 # 0 is actual, 1 is smaller
+    table_id = 0 # 0 is actual, 1 is smaller
 
     cards_list = make_cards_list(get_cards_json(table_id))
     table = Table(cards_list)
 
-    ex_table_1_soln = [[Card("one", "diamond", "purple", "solid"),
+    # solns_list = [make_cards_list() for ]
+    ex_table_2_solns = [[Card('two', 'squiggle', 'red', 'striped'), Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid')],
+      [Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')],
+      [Card('two', 'squiggle', 'green', 'empty'), Card('one', 'squiggle', 'purple', 'striped'), Card('three', 'squiggle', 'red', 'solid')],
+      [Card('one', 'squiggle', 'green', 'solid'), Card('three', 'diamond', 'green', 'solid'), Card('two', 'oval', 'green', 'solid')],
+      [Card('two', 'squiggle', 'red', 'striped'), Card('two', 'diamond', 'green', 'empty'), Card('two', 'oval', 'purple', 'solid')],
+      [Card('three', 'diamond', 'red', 'empty'), Card('one', 'squiggle', 'purple', 'striped'), Card('two', 'oval', 'green', 'solid')]]
+
+    ex_table_1_solns = [[Card("one", "diamond", "purple", "solid"),
                         Card("two", "diamond", "purple", "solid"),
                         Card("three", "diamond", "purple", "solid")
                         ]]
 
-    # print(check_solutions(table_id, ex_table_1_soln))
-    print(table.__contains__(Card("one", "oval", "red", "striped")))
+    print(check_solutions(table_id, ex_table_2_solns))
+    # print(table.__contains__(Card("one", "oval", "red", "striped")))

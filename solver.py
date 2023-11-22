@@ -1,4 +1,5 @@
 import json
+from itertools import combinations
 
 class Card(object):
     def __init__(self, number, shape, color, fill) -> None:
@@ -86,6 +87,13 @@ class Table(Card_Collection):
         self.group_fill = group_fill_dict
         return
 
+    def card_combinations(self) -> list:
+        '''
+        With 12 cards, should always have len = 220
+        '''
+        combos = list(combinations(self.cards, 3))
+        return combos
+
     def solved_sets(self) -> list:
         # HERE IS THE THING
         # should return a list of Card_Collections
@@ -120,6 +128,13 @@ def make_cards_list(cards:list) -> list:
     return cards_list
 
 
+def compare_cards(cards_1: Table | Card_Collection, cards_2: Table | Card_Collection) -> bool:
+    """
+    Given two collections of cards, returns bool whether or not they contain the same cards
+    """
+    return (cards_1 == cards_2)
+
+
 def check_solutions(table_id:int, solutions:list) -> bool:
     '''
     This is where I can compare the solutions that my program comes up with against "Solution Sets" from the json file;
@@ -139,7 +154,7 @@ def check_solutions(table_id:int, solutions:list) -> bool:
 
 
 if __name__ == '__main__':
-    # numbers = 1, 2, 3
+    # numbers = one, two, three
     # shape = diamond, oval, squiggle
     # color = purple, green, red
     # fill = empty, striped, solid
@@ -147,9 +162,12 @@ if __name__ == '__main__':
     table_id = 0 # 0 is actual, 1 is smaller
 
     cards_list = make_cards_list(get_cards_json(table_id))
-    # table = Table(cards_list)
+    table1 = Table(cards_list)
+    print(table1)
+    print()
 
-    table = Table(Card_Collection(cards_list))
+    table2 = Table(Card_Collection(cards_list))
+    print(table2)
 
     ex_table_2_solns = [Card_Collection([Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')]),
       Card_Collection([Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')]),
@@ -163,4 +181,7 @@ if __name__ == '__main__':
                         Card("three", "diamond", "purple", "solid")
                         ]]
 
-    print(check_solutions(table_id, ex_table_2_solns))
+    # print(check_solutions(table_id, ex_table_2_solns))
+    print(compare_cards(table1, table2))
+    # combos = Table.card_combinations(table1)
+    # print(type(combos))

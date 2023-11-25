@@ -65,9 +65,6 @@ class Table(Card_Collection):
 
         self.valid_sets: list = self.solved_sets()
 
-    def __repr__(self) -> str:
-        return f"{type(self).__name__}({self.cards})"
-
     def get_card_combinations(self) -> list:
         '''
         With 12 cards, should always have len = 220
@@ -167,8 +164,6 @@ if __name__ == '__main__':
 
     cards_list = make_cards_list(get_cards_json(table_id))
     table1 = Table(cards_list)
-    # print(table1)
-    # print()
 
     ex_table_2_solns = [Card_Collection([Card('two', 'diamond', 'purple', 'empty'), Card('two', 'oval', 'green', 'solid'), Card('two', 'squiggle', 'red', 'striped')]),
       Card_Collection([Card('three', 'squiggle', 'red', 'solid'), Card('one', 'diamond', 'green', 'solid'), Card('two', 'oval', 'purple', 'solid')]),
@@ -188,4 +183,5 @@ if __name__ == '__main__':
     # print(type(combos))
     
     print(check_solutions(table_id, table1.valid_sets))
-    print(table1.valid_sets)
+    print(repr(table1))
+    print("fart")
